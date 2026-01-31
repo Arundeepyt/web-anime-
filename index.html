@@ -2,157 +2,196 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Arun Deep | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arun Deep | Digital Portfolio</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
 <style>
 :root{
-  --main:#00bcd4;
-  --bg:#0d0d0d;
-  --card:#161616;
-  --text:#fff;
+--neon:#00ffff;
+--pink:#ff00ff;
+--bg:#000;
+--text:#fff;
+--glass:rgba(255,255,255,.05);
+}
+body.light{
+--neon:#0066ff;
+--pink:#ff0088;
+--bg:#f4f7ff;
+--text:#000;
+--glass:rgba(0,0,0,.05);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:Poppins,sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+transition:.4s;
 }
 
-body{
-  margin:0;
-  font-family:Poppins, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+/* PARTICLES */
+#tsparticles{position:fixed;inset:0;z-index:-5}
+
+/* CURSOR */
+.cursor{
+position:fixed;width:18px;height:18px;border:2px solid var(--neon);
+border-radius:50%;pointer-events:none;box-shadow:0 0 15px var(--neon);
+z-index:9999}
 
 /* HEADER */
 header{
-  padding:20px 40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#111;
-  position:sticky;
-  top:0;
+position:fixed;top:0;width:100%;z-index:1000;padding:15px 40px;
+display:flex;justify-content:space-between;align-items:center;
+background:rgba(0,0,0,.5);backdrop-filter:blur(12px)
 }
-
+body.light header{background:rgba(255,255,255,.6)}
+header h1{color:var(--neon);text-shadow:0 0 12px var(--neon)}
 nav a{
-  color:#ccc;
-  text-decoration:none;
-  margin:0 10px;
-}
-nav a:hover{color:var(--main);}
+color:var(--text);margin:0 12px;text-decoration:none;position:relative}
+nav a::after{
+content:"";position:absolute;width:0;height:2px;background:var(--neon);
+left:0;bottom:-4px;transition:.3s}
+nav a:hover::after{width:100%}
+#themeToggle{
+background:none;border:2px solid var(--neon);color:var(--neon);
+padding:6px 12px;border-radius:20px;cursor:pointer;box-shadow:0 0 10px var(--neon)}
 
 /* HERO */
 .hero{
-  text-align:center;
-  padding:100px 20px;
+min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+align-items:center;text-align:center;padding-top:80px;
+background:radial-gradient(circle at 20% 20%,rgba(0,255,255,.15),transparent 40%),
+radial-gradient(circle at 80% 80%,rgba(255,0,255,.15),transparent 40%)
 }
-.hero h1{
-  font-size:40px;
-  color:var(--main);
-}
+.hero h2{font-size:42px;color:var(--neon);text-shadow:0 0 20px var(--neon)}
 
 /* SECTIONS */
 section{
-  max-width:900px;
-  margin:60px auto;
-  padding:30px;
-}
+max-width:1000px;margin:90px auto;padding:45px;border-radius:25px;
+background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);
+box-shadow:0 0 40px rgba(0,255,255,.15);
+opacity:0;transform:translateY(60px);transition:.7s}
+section.visible{opacity:1;transform:none}
+h2{text-align:center;margin-bottom:25px;color:var(--neon)}
 
+/* PROJECT CARDS */
+.projects{display:flex;gap:25px;flex-wrap:wrap;justify-content:center}
 .card{
-  background:var(--card);
-  padding:20px;
-  border-radius:10px;
-  margin:10px 0;
-}
+width:280px;padding:20px;border-radius:15px;background:var(--glass);
+box-shadow:0 0 20px rgba(0,255,255,.3);
+transform-style:preserve-3d;transition:.3s}
+.card:hover{box-shadow:0 0 35px var(--neon)}
 
 /* SKILLS */
-.bar{
-  height:10px;
-  background:#333;
-  border-radius:20px;
-  margin-top:5px;
-}
-.fill{
-  height:100%;
-  background:var(--main);
-  border-radius:20px;
-}
+.skill{margin:20px 0}
+.bar{height:18px;background:rgba(255,255,255,.15);border-radius:20px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--neon),var(--pink));transition:width 1.8s}
 
 /* CONTACT */
-input, textarea{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:6px;
-  border:none;
-}
-
+input,textarea,button{
+width:90%;margin:10px auto;display:block;padding:10px;border:none;border-radius:8px}
 button{
-  padding:10px 20px;
-  background:var(--main);
-  border:none;
-  color:#000;
-  cursor:pointer;
-  border-radius:6px;
-}
+background:linear-gradient(90deg,var(--neon),var(--pink));color:#fff;cursor:pointer;
+position:relative;overflow:hidden}
+button::before{
+content:"";position:absolute;width:120%;height:120%;
+background:radial-gradient(circle,rgba(255,255,255,.5),transparent 60%);
+top:-10%;left:-10%;opacity:0;transition:.4s}
+button:hover::before{opacity:.4}
 
-footer{
-  text-align:center;
-  padding:30px;
-  background:#111;
-  margin-top:50px;
-}
+/* FOOTER */
+footer{text-align:center;padding:30px}
+.social a{color:var(--text);font-size:26px;margin:0 12px}
+.social a:hover{color:var(--neon);text-shadow:0 0 12px var(--neon)}
 </style>
 </head>
 
 <body>
 
+<div id="tsparticles"></div>
+<div class="cursor"></div>
+
 <header>
-  <h2>Arun Deep</h2>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<h1>Arun Deep</h1>
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</nav>
+<button id="themeToggle">🌙</button>
 </header>
 
 <div class="hero">
-  <h1>Web Developer & Python Programmer</h1>
-  <p>I build clean and modern web apps.</p>
+<h2>I build <span id="typeText"></span></h2>
+<p>Programmer • Python Lover 🐍 • Speed 🏁</p>
 </div>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>Passionate programmer focused on clean UI, logic, and performance.</p>
-</section>
+<section id="about"><h2>About Me</h2><p>Passionate developer crafting interactive digital experiences.</p></section>
 
 <section id="projects">
-  <h2>Projects</h2>
-  <div class="card">
-    Weather App — <a href="https://w-eather-app.vercel.app/" target="_blank">View</a>
-  </div>
-  <div class="card">
-    Fitness App — <a href="https://fitnesss-app-six.vercel.app/" target="_blank">View</a>
-  </div>
+<h2>Projects</h2>
+<div class="projects">
+<div class="card"><h3>Weather App</h3></div>
+<div class="card"><h3>Fitness App</h3></div>
+</div>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
-  HTML<div class="bar"><div class="fill" style="width:90%"></div></div>
-  CSS<div class="bar"><div class="fill" style="width:85%"></div></div>
-  JavaScript<div class="bar"><div class="fill" style="width:80%"></div></div>
-  Python<div class="bar"><div class="fill" style="width:75%"></div></div>
+<h2>Skills</h2>
+<div class="skill">HTML<div class="bar"><div class="fill" data-value="90"></div></div></div>
+<div class="skill">CSS<div class="bar"><div class="fill" data-value="85"></div></div></div>
+<div class="skill">JavaScript<div class="bar"><div class="fill" data-value="80"></div></div></div>
+<div class="skill">Python<div class="bar"><div class="fill" data-value="70"></div></div></div>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <input placeholder="Your Name"/>
-  <input placeholder="Your Email"/>
-  <textarea rows="4" placeholder="Message"></textarea>
-  <button>Send</button>
-</section>
+<section id="contact"><h2>Contact</h2><input placeholder="Your Name"><input placeholder="Email"><textarea placeholder="Message"></textarea><button>Send</button></section>
 
-<footer>
-  © 2025 Arun Deep
-</footer>
+<footer>© 2025 Arun Deep</footer>
+
+<script>
+tsParticles.load("tsparticles",{particles:{number:{value:70},color:{value:"#00ffff"},links:{enable:true,color:"#00ffff",opacity:0.3},move:{enable:true,speed:1},size:{value:2}}});
+
+// Typing Effect
+const words=["Cyberpunk Websites","Interactive Experiences","AI-Powered Apps"];
+let i=0,j=0,current="",del=false;
+function type(){
+current=words[i];
+document.getElementById("typeText").textContent=current.substring(0,j);
+if(!del&&j++===current.length+1){del=true;setTimeout(type,1000);return}
+if(del&&j--===0){del=false;i=(i+1)%words.length}
+setTimeout(type,del?40:80)}
+type();
+
+// Scroll reveal
+const sections=document.querySelectorAll("section"),fills=document.querySelectorAll(".fill");
+window.addEventListener("scroll",()=>{
+sections.forEach(s=>{if(s.getBoundingClientRect().top<innerHeight-120)s.classList.add("visible")});
+fills.forEach(f=>{if(f.getBoundingClientRect().top<innerHeight-120)f.style.width=f.dataset.value+"%"})
+});
+
+// Cursor
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px"});
+
+// Theme toggle
+const toggle=document.getElementById("themeToggle");
+toggle.onclick=()=>{document.body.classList.toggle("light");toggle.textContent=document.body.classList.contains("light")?"☀️":"🌙"};
+
+// 3D Cards
+document.querySelectorAll(".card").forEach(card=>{
+card.addEventListener("mousemove",e=>{
+const r=card.getBoundingClientRect();
+const x=e.clientX-r.left,y=e.clientY-r.top;
+card.style.transform=rotateX(${-(y-r.height/2)/10}deg) rotateY(${(x-r.width/2)/10}deg) scale(1.05)});
+card.addEventListener("mouseleave",()=>card.style.transform="rotateX(0) rotateY(0)")});
+</script>
 
 </body>
 </html>
