@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,159 +11,215 @@
 
 <style>
 :root {
-  --neon:#00ffff;
-  --pink:#ff00ff;
-  --bg:#000;
-  --text:#fff;
-  --glass:rgba(255,255,255,.06);
+    --neon: #00ffff;
+    --pink: #ff00ff;
+    --bg: #000;
+    --text: #fff;
+    --glass: rgba(255, 255, 255, .06);
 }
 body.light {
-  --neon:#0066ff;
-  --pink:#ff0088;
-  --bg:#f5f7fb;
-  --text:#000;
-  --glass:rgba(0,0,0,.05);
+    --neon: #0066ff;
+    --pink: #ff0088;
+    --bg: #f5f7fb;
+    --text: #000;
+    --glass: rgba(0, 0, 0, .05);
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:Poppins,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-  transition:.4s;
-  scroll-behavior:smooth;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-/* CURSOR */
-.cursor{
-  position:fixed;
-  width:18px;height:18px;
-  border:2px solid var(--neon);
-  border-radius:50%;
-  box-shadow:0 0 20px var(--neon);
-  pointer-events:none;
-  z-index:9999;
+body {
+    font-family: Poppins, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    transition: .4s;
 }
 
 /* BACKGROUND */
-.python-bg{
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  opacity:.15;
+.python-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    opacity: .12;
+    pointer-events: none;
+}
+
+/* DIGITAL GRASS */
+#grassFX{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+    opacity:.25;
+}
+
+/* CURSOR */
+.cursor {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--neon);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 15px var(--neon);
+    z-index: 9999;
 }
 
 /* HEADER */
-header{
-  position:fixed;top:0;width:100%;
-  display:flex;justify-content:space-between;
-  padding:15px 40px;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,.6);
-  z-index:1000;
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(10px);
 }
-body.light header{background:rgba(255,255,255,.7);}
-header h1{color:var(--neon);text-shadow:0 0 20px var(--neon);}
-
-nav a{color:var(--text);margin:0 12px;text-decoration:none;}
-nav a:hover{color:var(--neon);}
-
-#themeToggle{
-  background:none;border:2px solid var(--neon);
-  color:var(--neon);
-  padding:6px 14px;border-radius:20px;
-  cursor:pointer;
-  box-shadow:0 0 12px var(--neon);
+body.light header {
+    background: rgba(255, 255, 255, .7);
+}
+header h1 {
+    color: var(--neon);
+    text-shadow: 0 0 12px var(--neon);
+}
+nav a {
+    color: var(--text);
+    margin: 0 12px;
+    text-decoration: none;
+}
+nav a:hover {
+    color: var(--neon);
+}
+#themeToggle {
+    background: none;
+    border: 2px solid var(--neon);
+    color: var(--neon);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--neon);
 }
 
 /* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
 }
-.hero h2{
-  font-size:40px;
-  color:var(--neon);
-  animation:neonPulse 3s infinite alternate;
+.hero h2 {
+    font-size: 40px;
+    color: var(--neon);
+    text-shadow: 0 0 20px var(--neon);
 }
-.hero span{color:var(--pink);}
-
-@keyframes neonPulse{
-  0%{text-shadow:0 0 10px var(--neon);}
-  50%{text-shadow:0 0 40px var(--neon),0 0 80px var(--pink);}
-  100%{text-shadow:0 0 10px var(--neon);}
-}
+.hero span { color: var(--pink); }
 
 /* SECTIONS */
-section{
-  max-width:1000px;
-  margin:120px auto;
-  padding:40px;
-  background:var(--glass);
-  border-radius:20px;
-  box-shadow:0 0 30px rgba(0,255,255,.3);
-  opacity:0;
-  transform:perspective(600px) rotateX(10deg) translateY(80px);
-  transition:1s cubic-bezier(.19,1,.22,1);
+section {
+    max-width: 1000px;
+    margin: 90px auto;
+    padding: 40px;
+    border-radius: 20px;
+    background: var(--glass);
+    box-shadow: 0 0 25px rgba(0, 255, 255, .25);
+    opacity: 0;
+    transform: translateY(60px);
+    transition: .7s;
 }
-section.visible{
-  opacity:1;
-  transform:none;
+section.visible {
+    opacity: 1;
+    transform: none;
 }
-h2{text-align:center;color:var(--neon);margin-bottom:30px;}
+h2 {
+    color: var(--neon);
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px var(--neon);
+}
 
 /* PROJECTS */
-.projects{
-  display:flex;gap:25px;flex-wrap:wrap;justify-content:center;
+.projects {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.card{
-  width:280px;padding:20px;border-radius:18px;
-  background:var(--glass);
-  box-shadow:0 0 30px rgba(0,255,255,.3);
-  transition:.5s;
-  position:relative;
-  overflow:hidden;
+.card {
+    width: 280px;
+    padding: 20px;
+    border-radius: 15px;
+    background: var(--glass);
+    box-shadow: 0 0 20px rgba(0, 255, 255, .3);
+    transition: .4s;
 }
-.card::after{
-  content:"";
-  position:absolute;
-  inset:-150%;
-  background:linear-gradient(120deg,transparent,var(--neon),transparent);
-  opacity:.3;
-  transition:1s;
-}
-.card:hover::after{inset:150%;}
-.card:hover{
-  transform:scale(1.08) translateY(-15px);
-  box-shadow:0 0 60px var(--neon);
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 35px var(--neon);
 }
 
 /* SKILLS */
-.bar{
-  height:18px;background:rgba(255,255,255,.15);
-  border-radius:20px;overflow:hidden;
+#skills { position: relative; overflow: hidden; }
+#skillCanvas {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
 }
-.fill{
-  height:100%;width:0;
-  background:linear-gradient(90deg,var(--neon),var(--pink));
-  box-shadow:0 0 20px var(--neon);
-  transition:2s;
-  animation:power 2s infinite;
+.skills-content { position: relative; z-index: 2; }
+.skill { margin: 22px 0; }
+.skill span { float: right; color: var(--neon); }
+.bar {
+    margin-top: 8px;
+    height: 18px;
+    background: rgba(255, 255, 255, .15);
+    border-radius: 20px;
+    overflow: hidden;
 }
-@keyframes power{
-  0%{filter:brightness(1);}
-  50%{filter:brightness(2);}
-  100%{filter:brightness(1);}
+.fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--neon), var(--pink));
+    transition: width 1.8s ease;
+}
+
+/* CONTACT */
+input, textarea, button {
+    width: 90%;
+    margin: 10px auto;
+    display: block;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+button {
+    background: linear-gradient(90deg, var(--neon), var(--pink));
+    color: #fff;
+    cursor: pointer;
 }
 
 /* FOOTER */
-footer{text-align:center;padding:30px;}
-.social a{font-size:28px;color:var(--text);margin:0 12px;}
-.social a:hover{color:var(--neon);text-shadow:0 0 15px var(--neon);}
+footer {
+    text-align: center;
+    padding: 30px;
+}
+.social a {
+    color: var(--text);
+    font-size: 26px;
+    margin: 0 12px;
+    transition: .3s;
+}
+.social a:hover {
+    color: var(--neon);
+    text-shadow: 0 0 12px var(--neon);
+}
 </style>
 </head>
 
@@ -170,8 +227,11 @@ footer{text-align:center;padding:30px;}
 
 <div class="cursor"></div>
 
+<canvas id="grassFX"></canvas>
+
 <div class="python-bg">
-<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_kkflmtur.json" background="transparent" speed="0.4" loop autoplay></lottie-player>
+<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_kkflmtur.json"
+background="transparent" speed="0.4" loop autoplay></lottie-player>
 </div>
 
 <header>
@@ -186,51 +246,85 @@ footer{text-align:center;padding:30px;}
 </header>
 
 <div class="hero">
-<h2 id="type"></h2>
+<h2>I build <span>Cyberpunk Web Experiences</span></h2>
 <p>Programmer • Python Lover 🐍 • Speed 🏁</p>
 </div>
 
-<section id="about"><h2>About</h2><p>Cyberpunk Developer focused on UI + Logic.</p></section>
+<section id="about">
+<h2>About Me</h2>
+<p>I'm Arun — a passionate and disciplined programmer focused on building clean, interactive, and visually powerful web experiences.</p>
+</section>
 
 <section id="projects">
 <h2>Projects</h2>
 <div class="projects">
-<div class="card">Weather App</div>
-<div class="card">Fitness App</div>
+<div class="card"><h3>Weather App</h3></div>
+<div class="card"><h3>Fitness App</h3></div>
 </div>
 </section>
 
 <section id="skills">
+<canvas id="skillCanvas"></canvas>
+<div class="skills-content">
 <h2>Skills</h2>
-<div class="bar"><div class="fill" data="90"></div></div>
+<div class="skill">HTML <span>90%</span><div class="bar"><div class="fill" data-value="90"></div></div></div>
+</div>
 </section>
 
-<section id="contact"><h2>Contact</h2></section>
+<section id="contact"><h2>Contact Me</h2></section>
 
 <footer>© 2025 Arun Deep</footer>
 
 <script>
+const sections=document.querySelectorAll("section");
+const fills=document.querySelectorAll(".fill");
+
+window.addEventListener("scroll",()=>{
+sections.forEach(s=>{
+if(s.getBoundingClientRect().top<window.innerHeight-120)s.classList.add("visible");
+});
+fills.forEach(f=>{
+if(f.getBoundingClientRect().top<window.innerHeight-120)f.style.width=f.dataset.value+"%";
+});
+});
+
 /* Cursor */
 const cursor=document.querySelector(".cursor");
 document.addEventListener("mousemove",e=>{
-cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
 });
 
-/* Sections */
-document.addEventListener("scroll",()=>{
-document.querySelectorAll("section").forEach(s=>{
-if(s.getBoundingClientRect().top<window.innerHeight-120)
-s.classList.add("visible");
-});
-});
+/* Theme */
+document.getElementById("themeToggle").onclick=()=>{
+document.body.classList.toggle("light");
+};
 
-/* Typing */
-const text="I build Cyberpunk Web Experiences";
-let i=0;
-setInterval(()=>{
-document.getElementById("type").textContent=text.slice(0,i++);
-if(i>text.length)i=0;
-},120);
+/* Cyber Grass */
+const grass=document.getElementById("grassFX");
+const gtx=grass.getContext("2d");
+function resizeGrass(){grass.width=innerWidth;grass.height=innerHeight;}
+resizeGrass();
+window.addEventListener("resize",resizeGrass);
+
+const blades=[];
+for(let i=0;i<140;i++)blades.push({x:Math.random()*grass.width,y:Math.random()*grass.height,speed:Math.random()*1.5+.5,len:Math.random()*30+20});
+
+function drawGrass(){
+gtx.clearRect(0,0,grass.width,grass.height);
+const neon=getComputedStyle(document.body).getPropertyValue("--neon");
+blades.forEach(b=>{
+gtx.strokeStyle=neon;
+gtx.beginPath();
+gtx.moveTo(b.x,b.y);
+gtx.lineTo(b.x,b.y+b.len);
+gtx.stroke();
+b.y+=b.speed;
+if(b.y>grass.height){b.y=-b.len;b.x=Math.random()*grass.width;}
+});
+requestAnimationFrame(drawGrass);
+}
+drawGrass();
 </script>
 
 </body>
