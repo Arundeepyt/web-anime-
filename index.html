@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Arun Deep | Portfolio</title>
+
+<style>
+:root{
+  --main:#00bcd4;
+  --bg:#0d0d0d;
+  --card:#161616;
+  --text:#fff;
+}
+
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#111;
+  position:sticky;
+  top:0;
+}
+
+nav a{
+  color:#ccc;
+  text-decoration:none;
+  margin:0 10px;
+}
+nav a:hover{color:var(--main);}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:100px 20px;
+}
+.hero h1{
+  font-size:40px;
+  color:var(--main);
+}
+
+/* SECTIONS */
+section{
+  max-width:900px;
+  margin:60px auto;
+  padding:30px;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+/* SKILLS */
+.bar{
+  height:10px;
+  background:#333;
+  border-radius:20px;
+  margin-top:5px;
+}
+.fill{
+  height:100%;
+  background:var(--main);
+  border-radius:20px;
+}
+
+/* CONTACT */
+input, textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:6px;
+  border:none;
+}
+
+button{
+  padding:10px 20px;
+  background:var(--main);
+  border:none;
+  color:#000;
+  cursor:pointer;
+  border-radius:6px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  background:#111;
+  margin-top:50px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Arun Deep</h2>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Web Developer & Python Programmer</h1>
+  <p>I build clean and modern web apps.</p>
+</div>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>Passionate programmer focused on clean UI, logic, and performance.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="card">
+    Weather App — <a href="https://w-eather-app.vercel.app/" target="_blank">View</a>
+  </div>
+  <div class="card">
+    Fitness App — <a href="https://fitnesss-app-six.vercel.app/" target="_blank">View</a>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  HTML<div class="bar"><div class="fill" style="width:90%"></div></div>
+  CSS<div class="bar"><div class="fill" style="width:85%"></div></div>
+  JavaScript<div class="bar"><div class="fill" style="width:80%"></div></div>
+  Python<div class="bar"><div class="fill" style="width:75%"></div></div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <input placeholder="Your Name"/>
+  <input placeholder="Your Email"/>
+  <textarea rows="4" placeholder="Message"></textarea>
+  <button>Send</button>
+</section>
+
+<footer>
+  © 2025 Arun Deep
+</footer>
+
+</body>
+</html>
